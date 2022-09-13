@@ -8,6 +8,11 @@ import com.rateservice.testproject.repository.RatesRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.Map;
 
 public  class RatesUtil {
@@ -35,8 +40,23 @@ public  class RatesUtil {
 
     }
 
-    public static void createXML()
+    public static void createXML(String data)
     {
+
+        String folder = Paths.get("")
+                .toAbsolutePath()
+                .toString();
+        File file = new File( folder );
+        file.mkdirs();
+        try {
+            BufferedWriter writer = new BufferedWriter( new FileWriter("file") );
+            writer.write( data );
+            writer.flush();
+            writer.close();
+        } catch ( IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
 
     }
 
