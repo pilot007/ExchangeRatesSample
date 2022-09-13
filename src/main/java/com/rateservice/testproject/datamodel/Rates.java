@@ -4,6 +4,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 
 @Entity
@@ -28,7 +29,7 @@ public class Rates {
     private String rate;
 
     @Column()
-    private LocalDateTime datum;
+    private Date datum;
 
     public Rates() {
     }
@@ -38,7 +39,7 @@ public class Rates {
         this.exchange1= exchange1;
         this.exchange2= exchange2;
         this.rate= rate;
-        this.datum = java.time.LocalDateTime.now();
+        this.datum =  new Date();
     }
 
 }
