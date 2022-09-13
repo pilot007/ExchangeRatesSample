@@ -23,7 +23,7 @@
 
     Generating XML File olutput with below URL
     We can developt an other small job to save this output to File 
-
+    and also we can give a date parameter for daily reporting etc..
 
     //URL
     http://localhost:8081/api/rates/createXmlFile/USD,GBP,EUR,CHF
