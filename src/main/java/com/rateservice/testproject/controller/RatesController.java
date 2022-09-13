@@ -1,16 +1,16 @@
 package com.rateservice.testproject.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.rateservice.testproject.datamodel.Rates;
 import com.rateservice.testproject.repository.RatesRepository;
 import com.rateservice.testproject.utils.RatesUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
@@ -40,8 +40,12 @@ public class RatesController {
     //URL
     //http://localhost:8081/api/rates/createXmlFile/USD,GBP,EUR,CHF
     @GetMapping(value="/createXmlFile/{exchange1}",produces = { "application/xml", "text/xml" })
-    public List<Rates> createXMLFile(@PathVariable List<String> exchange1) {
+    public List<Rates> createXMLFile(@PathVariable List<String> exchange1) throws JsonProcessingException {
         List<Rates> rt = ratesRepository.findByExchange1In (exchange1);
+        ObjectMapper xmlMapper = new XmlMapper();
+        xmlMapper.enable(SerializationFeature.INDENT_OUTPUT);
+        String XMLStr = xmlMapper.writeValueAsString(rt);
+        RatesUtil.createXML(XMLStr);
         return rt;
     }
 
