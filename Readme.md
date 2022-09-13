@@ -8,8 +8,11 @@
    //URL
 
    http://localhost:8081/api/rates/exchange/EUR
+
    http://localhost:8081/api/rates/exchange/USD
+
    http://localhost:8081/api/rates/exchange/GBP
+
    http://localhost:8081/api/rates/exchange/CHF
 
 
