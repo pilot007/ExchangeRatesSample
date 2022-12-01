@@ -1,6 +1,5 @@
 package com.rateservice.testproject.datamodel;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -10,8 +9,9 @@ import java.util.Date;
 @Table(name = "RATES")
 @SequenceGenerator(name = "ID",  sequenceName = "RATES_SQ",
         allocationSize = 1)
-@Getter
-@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Rates {
 
     @Id
@@ -30,8 +30,6 @@ public class Rates {
     @Column()
     private Date datum;
 
-    public Rates() {
-    }
 
     public Rates(String exchange1, String exchange2, String rate) {
 
@@ -40,5 +38,4 @@ public class Rates {
         this.rate= rate;
         this.datum =  new Date();
     }
-
 }
