@@ -1,5 +1,10 @@
 # Getting Started
 
+### 0. Step
+
+Swagger Test UI 
+http://localhost:8081/swagger-ui/index.html
+
 ### 1. Step
    This is the sample project to get ExchangeRates from ThirdParty system
 
